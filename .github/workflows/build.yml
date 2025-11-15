@@ -6,7 +6,7 @@ on:
   workflow_dispatch:      # 可手动触发
 
 env:
-  UPSTREAM_REPO: Celechron/Celechron  # 上游仓库
+  UPSTREAM_REPO: lzy755277/Celechron  # 上游仓库
 
 jobs:
   check-version:
@@ -50,7 +50,7 @@ jobs:
 
       - name: Clone upstream repo
         run: |
-          git clone --depth 1 --branch ${{ needs.check-version.outputs.release_tag }} https://github.com/${{ env.UPSTREAM_REPO }} upstream
+          git clone --depth 1 --branch main https://github.com/${{ env.UPSTREAM_REPO }} upstream
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -161,3 +161,4 @@ jobs:
           git commit -m "Update last released version: ${{ needs.check-version.outputs.release_tag }}"
           git push
   
+
